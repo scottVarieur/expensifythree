@@ -1,25 +1,21 @@
-// dummy data for tests
+import moment from 'moment'
 
-export const expenses = [
-  {
-    description: "a",
-    createdAt: 1000,
-    id: 1234,
-    amount: 5000,
-    note: ""
-  },
-  {
-    description: "b",
-    createdAt: 5000,
-    id: 1235,
-    amount: 10000,
-    note: "abc"
-  },
-  {
-    description: "c",
-    createdAt: 10000,
-    id: 1236,
-    amount: 10000,
-    note: "123"
-  }
-];
+export default [{
+  id: '1',
+  description: 'Gum',
+  note: '',
+  amount: 195,
+  createdAt: 0
+}, {
+  id: '2',
+  description: 'Rent',
+  note: '',
+  amount: 109500,
+  createdAt: moment(0).subtract(4, 'days').valueOf()
+}, {
+  id: '3',
+  description: 'Credit Card',
+  note: '',
+  amount: 4500,
+  createdAt: moment(0).add(4, 'days').valueOf()
+}];

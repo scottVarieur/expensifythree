@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
 const HelpPage = () => (
   <div>
-    <p>This is my help page</p>
+    This is from my help component
   </div>
 );
 

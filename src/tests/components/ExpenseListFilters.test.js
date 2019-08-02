@@ -1,82 +1,77 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import moment from 'moment';
 import { ExpenseListFilters } from '../../components/ExpenseListFilters';
 import { filters, altFilters } from '../fixtures/filters';
 
-let setTextFilterSpy,
-  sortByDateSpy,
-  sortByAmountSpy,
-  setStartDateSpy,
-  setEndDateSpy,
-  wrapper;
+let setTextFilter, sortByDate, sortByAmount, setStartDate, setEndDate, wrapper;
 
 beforeEach(() => {
-  setTextFilterSpy = jest.fn();
-  sortByDateSpy = jest.fn();
-  sortByAmountSpy = jest.fn();
-  setStartDateSpy = jest.fn();
-  setEndDateSpy = jest.fn();
+  setTextFilter = jest.fn();
+  sortByDate = jest.fn();
+  sortByAmount = jest.fn();
+  setStartDate = jest.fn();
+  setEndDate = jest.fn();
   wrapper = shallow(
     <ExpenseListFilters
       filters={filters}
-      setTextFilter={setTextFilterSpy}
-      sortByDate={sortByDateSpy}
-      sortByAmount={sortByAmountSpy}
-      setStartDate={setStartDateSpy}
-      setEndDate={setEndDateSpy}
+      setTextFilter={setTextFilter}
+      sortByDate={sortByDate}
+      sortByAmount={sortByAmount}
+      setStartDate={setStartDate}
+      setEndDate={setEndDate}
     />
   );
 });
 
-test('should render ExpenseListFilters with default data correctly', () => {
+test('should render ExpenseListFilters correctly', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
 test('should render ExpenseListFilters with alt data correctly', () => {
-  wrapper.setProps({ filters: altFilters });
+  wrapper.setProps({
+    filters: altFilters
+  });
   expect(wrapper).toMatchSnapshot();
 });
 
 test('should handle text change', () => {
-  const e = {
-    target: {
-      value: altFilters.text
-    }
-  };
-  wrapper.find('input').prop('onChange')(e);
-  expect(setTextFilterSpy).toHaveBeenLastCalledWith(altFilters.text);
+  const value = 'rent';
+  wrapper.find('input').simulate('change', {
+    target: { value }
+  });
+  expect(setTextFilter).toHaveBeenLastCalledWith(value);
 });
 
 test('should sort by date', () => {
-  const e = {
-    target: {
-      value: filters.sortBy
-    }
-  };
-  wrapper.find('select').prop('onChange')(e);
-  expect(sortByDateSpy).toHaveBeenCalled();
+  const value = 'date';
+  wrapper.setProps({
+    filters: altFilters
+  });
+  wrapper.find('select').simulate('change', {
+    target: { value }
+  });
+  expect(sortByDate).toHaveBeenCalled();
 });
 
 test('should sort by amount', () => {
-  const e = {
-    target: {
-      value: altFilters.sortBy
-    }
-  };
-  wrapper.find('select').prop('onChange')(e);
-  expect(sortByAmountSpy).toHaveBeenCalled();
+  const value = 'amount';
+  wrapper.find('select').simulate('change', {
+    target: { value }
+  });
+  expect(sortByAmount).toHaveBeenCalled();
 });
 
 test('should handle date changes', () => {
-  wrapper.find('DateRangePicker').prop('onDatesChange')({
-    startDate: altFilters.setStartDate,
-    endDate: altFilters.setEndDate
-  });
-  expect(setStartDateSpy).toHaveBeenLastCalledWith(altFilters.setStartDate);
-  expect(setEndDateSpy).toHaveBeenLastCalledWith(altFilters.setEndDate);
+  const startDate = moment(0).add(4, 'years');
+  const endDate = moment(0).add(8, 'years');
+  wrapper.find('DateRangePicker').prop('onDatesChange')({ startDate, endDate });
+  expect(setStartDate).toHaveBeenLastCalledWith(startDate);
+  expect(setEndDate).toHaveBeenLastCalledWith(endDate);
 });
 
-test('should handle date focus changes', () => {
-  wrapper.find('DateRangePicker').prop('onFocusChange')('endDate');
-  expect(wrapper.state('calendarFocused')).toBe('endDate');
+test('hould handle date focus changes', () => {
+  const calendarFocused = 'endDate';
+  wrapper.find('DateRangePicker').prop('onFocusChange')(calendarFocused);
+  expect(wrapper.state('calendarFocused')).toBe(calendarFocused);
 });

@@ -3,7 +3,7 @@
 exports[`should render ExpenseList with empty message 1`] = `
 <div>
   <p>
-    No expnese
+    No expenses
   </p>
 </div>
 `;
@@ -11,40 +11,25 @@ exports[`should render ExpenseList with empty message 1`] = `
 exports[`should render ExpenseList with expenses 1`] = `
 <div>
   <ExpenseListItem
-    expense={
-      Object {
-        "amount": 5000,
-        "createdAt": 1000,
-        "description": "a",
-        "id": 1234,
-        "note": "",
-      }
-    }
-    key="1234"
+    amount={195}
+    createdAt={0}
+    description="Gum"
+    id="1"
+    note=""
   />
   <ExpenseListItem
-    expense={
-      Object {
-        "amount": 10000,
-        "createdAt": 5000,
-        "description": "b",
-        "id": 1235,
-        "note": "abc",
-      }
-    }
-    key="1235"
+    amount={109500}
+    createdAt={-345600000}
+    description="Rent"
+    id="2"
+    note=""
   />
   <ExpenseListItem
-    expense={
-      Object {
-        "amount": 10000,
-        "createdAt": 10000,
-        "description": "c",
-        "id": 1236,
-        "note": "123",
-      }
-    }
-    key="1236"
+    amount={4500}
+    createdAt={345600000}
+    description="Credit Card"
+    id="3"
+    note=""
   />
 </div>
 `;
