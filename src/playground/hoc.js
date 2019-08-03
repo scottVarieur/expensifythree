@@ -1,8 +1,8 @@
-// Higher Order Component (HOC) - A component (HOC) that renders another component
-// Reuse code
-// Render hijacking
-// Prop manipulation
-// Abstract state
+// higher order component (HOC) - a component(HOC) that renders another componnet
+//Reuse code
+//REnder highjacking
+//prop manipulation
+//abstract state
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -17,26 +17,23 @@ const Info = (props) => (
 const withAdminWarning = (WrappedComponent) => {
   return (props) => (
     <div>
-      {props.isAdmin && <p>This is private info. Please don't share!</p>}
+      {props.isAdmin && <p>hi</p>}
       <WrappedComponent {...props} />
     </div>
   );
 };
 
-const requireAuthentication = (WrappedComponent) => {
+const AdminInfo = withAdminWarning(Info);
+
+const RequireAuthentication = (WrappedComponent) => {
   return (props) => (
     <div>
-      {props.isAuthenticated ? (
-        <WrappedComponent {...props} />
-      ) : (
-          <p>Please login to view the info</p>
-        )}
+      {props.isAuthenticated ? <WrappedComponent {...props} /> : <p>Please login</p>}
     </div>
   );
-};
+}
 
-const AdminInfo = withAdminWarning(Info);
-const AuthInfo = requireAuthentication(Info);
+const AuthInfo = RequireAuthentication(Info);
 
-// ReactDOM.render(<AdminInfo isAdmin={true} info="There are the details" />, document.getElementById('app'));
-ReactDOM.render(<AuthInfo isAuthenticated={true} info="There are the details" />, document.getElementById('app'));
+
+ReactDOM.render(<AuthInfo isAuthenticated={true} info={"hiihihihi"} />, document.getElementById("app"));

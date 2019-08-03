@@ -4,7 +4,8 @@ html {
 
 body {
   font-family: Helvetica, Arial, sans-serif;
-  font-size: $m-size;
+  font-size: $md-size;
+  background: white;
 }
 
 button {
@@ -15,6 +16,6 @@ button:disabled {
   cursor: default;
 }
 
-.is-active {
+.is-active{
   font-weight: bold;
 }

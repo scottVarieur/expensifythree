@@ -1,51 +1,63 @@
-import { addExpense, editExpense, removeExpense } from '../../actions/expenses';
+import { addExpense, editExpense, removeExpense } from "../../actions/expenses";
 
-test('should setup remove expense action object', () => {
-  const action = removeExpense({ id: '123abc' });
+test("should setup remove expense acion object", () => {
+  const action = removeExpense({
+    id: "123abc"
+  });
   expect(action).toEqual({
-    type: 'REMOVE_EXPENSE',
-    id: '123abc'
+    type: "REMOVE_EXPENSE",
+    id: "123abc"
   });
 });
 
-test('should setup edit expense action object', () => {
-  const action = editExpense('123abc', { note: 'New note value' });
+test("should setup edit expense action object", () => {
+  const action = editExpense("abc123", {
+    description: "a",
+    note: "b",
+    amount: 50,
+    createdAt: 700
+  });
   expect(action).toEqual({
-    type: 'EDIT_EXPENSE',
-    id: '123abc',
+    type: "EDIT_EXPENSE",
+    id: "abc123",
     updates: {
-      note: 'New note value'
+      description: "a",
+      note: "b",
+      amount: 50,
+      createdAt: 700
     }
   });
 });
 
-test('should setup add expense action object with provided values', () => {
-  const expenseData = {
-    description: 'Rent',
-    amount: 109500,
+test("should setup add expesne action object with provided values", () => {
+  const action = addExpense({
+    description: "ab",
+    amount: 10000,
     createdAt: 1000,
-    note: 'This was last months rent'
-  };
-  const action = addExpense(expenseData);
+    note: "this was"
+  });
   expect(action).toEqual({
-    type: 'ADD_EXPENSE',
+    type: "ADD_EXPENSE",
     expense: {
-      ...expenseData,
+      description: "ab",
+      amount: 10000,
+      createdAt: 1000,
+      note: "this was",
       id: expect.any(String)
     }
   });
 });
 
-test('should setup add expense action object with default values', () => {
+test("should setup add expense action object with defalt values", () => {
   const action = addExpense();
   expect(action).toEqual({
-    type: 'ADD_EXPENSE',
+    type: "ADD_EXPENSE",
     expense: {
-      id: expect.any(String),
-      description: '',
-      note: '',
+      description: "",
       amount: 0,
-      createdAt: 0
+      createdAt: 0,
+      note: "",
+      id: expect.any(String)
     }
   });
 });

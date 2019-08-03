@@ -2,9 +2,9 @@
 
 exports[`should render AddExpensePage correctly 1`] = `
 <div>
-  <h1>
+  <h3>
     Add Expense
-  </h1>
+  </h3>
   <ExpenseForm
     onSubmit={[Function]}
   />

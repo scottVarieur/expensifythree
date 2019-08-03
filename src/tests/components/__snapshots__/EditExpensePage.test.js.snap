@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`should render EditExpensePage 1`] = `
+exports[`should render the EditExpensePage 1`] = `
 <div>
   <ExpenseForm
     expense={
       Object {
-        "amount": 4500,
-        "createdAt": 345600000,
-        "description": "Credit Card",
-        "id": "3",
+        "amount": 5000,
+        "createdAt": 1000,
+        "description": "a",
+        "id": 1234,
         "note": "",
       }
     }
