@@ -1,25 +1,24 @@
-// dummy data for tests
-
+//dummy expense data for tests
 export const expenses = [
   {
-    description: "a",
+    description: 'a',
     createdAt: 1000,
-    id: 1234,
+    id: 'adfasfda',
     amount: 5000,
-    note: ""
+    note: ''
   },
   {
-    description: "b",
+    description: 'b',
     createdAt: 5000,
-    id: 1235,
+    id: 'qwerqewrqewr',
     amount: 10000,
-    note: "abc"
+    note: 'abc'
   },
   {
-    description: "c",
+    description: 'c',
     createdAt: 10000,
-    id: 1236,
+    id: 'zcxvzxvczxv',
     amount: 10000,
-    note: "123"
+    note: '123'
   }
 ];

@@ -1,12 +1,12 @@
 import database from '../firebase/firebase';
 
-//action for adding an epxense to state 
+//action for adding an epxense to state in redux store
 const addExpense = expense => ({
   type: 'ADD_EXPENSE',
   expense
 });
 
-//Adds an expense to database then calls addExpense() with expense data
+//pushes an expense to database then calls addExpense() with expense data
 export const startAddExpense = (expenseData = {}) => {
   return dispatch => {
     const {
@@ -16,7 +16,7 @@ export const startAddExpense = (expenseData = {}) => {
       createdAt = 0
     } = expenseData;
     const expense = { description, note, amount, createdAt };
-    
+
     return database
       .ref('expenses')
       .push(expense)
@@ -34,17 +34,43 @@ export const startAddExpense = (expenseData = {}) => {
   };
 };
 
-//action for removing an expense in state
+//action for removing an expense in state in redux store
 const removeExpense = ({ id } = {}) => ({
   type: 'REMOVE_EXPENSE',
   id
 });
 
-//action for editing an expense in state
+//action for editing an expense in state in redux store
 const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',
   id,
   updates
 });
+
+export const setExpenses = expenses => ({
+  type: 'SET_EXPENSES',
+  expenses
+});
+
+export const startSetExpenses = () => {
+  return dispatch => {
+    return database
+      .ref('expenses')
+      .once('value')
+      .then(snapshot => {
+        const expenses = [];
+        snapshot.forEach(childSnapshot => {
+          expenses.push({
+            id: childSnapshot.key,
+            ...childSnapshot.val()
+          });
+        });
+        dispatch(setExpenses(expenses));
+      })
+      .catch(err => {
+        console.log('failed:', err);
+      });
+  };
+};
 
 export { addExpense, removeExpense, editExpense };
