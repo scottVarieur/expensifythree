@@ -40,6 +40,20 @@ const removeExpense = ({ id } = {}) => ({
   id
 });
 
+export const startRemoveExpense = ({ id } = {}) => {
+  return dispatch => {
+    return database
+      .ref(`expenses/${id}`)
+      .remove()
+      .then(() => {
+        dispatch(removeExpense({ id }));
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+};
+
 //action for editing an expense in state in redux store
 const editExpense = (id, updates) => ({
   type: 'EDIT_EXPENSE',
