@@ -7,7 +7,8 @@ import {
   removeExpense,
   setExpenses,
   startSetExpenses,
-  startRemoveExpense
+  startRemoveExpense,
+  startEditExpense
 } from '../../actions/expenses';
 import { expenses } from '../fixtures/expenses';
 import database from '../../firebase/firebase';
@@ -142,7 +143,7 @@ test('should remove expense from store and firebase', done => {
   const store = createMockStore({});
   const id = expenses[0].id;
   store
-    .dispatch(startRemoveExpense({id}))
+    .dispatch(startRemoveExpense({ id }))
     .then(() => {
       const actions = store.getActions();
       expect(actions[0]).toEqual({
@@ -157,7 +158,35 @@ test('should remove expense from store and firebase', done => {
     });
 });
 
-test('should remove expense from firesbase');
+test('should edit expense from firebase', done => {
+  const store = createMockStore({});
+  const id = expenses[1].id;
+  const updates = {
+    description: 'cake',
+    amount: 100000000
+  };
+  store
+    .dispatch(startEditExpense(id, updates))
+    .then(() => {
+      const actions = store.getActions();
+      expect(actions[0]).toEqual({
+        type: 'EDIT_EXPENSE',
+        id,
+        updates
+      });
+      return database.ref(`expenses/${id}`).once('value');
+    })
+    .then(snapshot => {
+      expect(snapshot.val()).toEqual({
+        description: 'b',
+        createdAt: 5000,
+        amount: 10000,
+        note: 'abc',
+        ...updates
+      });
+      done();
+    });
+});
 
 // test("should setup add expense action object with defalt values", () => {
 //   const action = addExpense();
