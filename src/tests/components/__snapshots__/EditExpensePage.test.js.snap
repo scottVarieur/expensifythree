@@ -2,6 +2,9 @@
 
 exports[`should render the EditExpensePage 1`] = `
 <div>
+  <h3>
+    Edit Expense
+  </h3>
   <ExpenseForm
     expense={
       Object {
