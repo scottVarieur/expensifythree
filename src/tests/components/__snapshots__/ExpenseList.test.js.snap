@@ -1,50 +1,104 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`should render ExpenseList with empty message 1`] = `
-<div>
-  <p>
-    No expnese
-  </p>
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    class="list-body"
+  >
+    <div
+      className="list-item list-item--message"
+    >
+      <span>
+        No expneses
+      </span>
+    </div>
+  </div>
 </div>
 `;
 
 exports[`should render ExpenseList with expenses 1`] = `
-<div>
-  <ExpenseListItem
-    expense={
-      Object {
-        "amount": 5000,
-        "createdAt": 1000,
-        "description": "a",
-        "id": "adfasfda",
-        "note": "",
+<div
+  className="content-container"
+>
+  <div
+    className="list-header"
+  >
+    <div
+      className="show-for-mobile"
+    >
+      Expenses
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Expense
+    </div>
+    <div
+      className="show-for-desktop"
+    >
+      Amount
+    </div>
+  </div>
+  <div
+    class="list-body"
+  >
+    <ExpenseListItem
+      expense={
+        Object {
+          "amount": 5000,
+          "createdAt": 1000,
+          "description": "a",
+          "id": "adfasfda",
+          "note": "",
+        }
       }
-    }
-    key="adfasfda"
-  />
-  <ExpenseListItem
-    expense={
-      Object {
-        "amount": 10000,
-        "createdAt": 5000,
-        "description": "b",
-        "id": "qwerqewrqewr",
-        "note": "abc",
+      key="adfasfda"
+    />
+    <ExpenseListItem
+      expense={
+        Object {
+          "amount": 10000,
+          "createdAt": 5000,
+          "description": "b",
+          "id": "qwerqewrqewr",
+          "note": "abc",
+        }
       }
-    }
-    key="qwerqewrqewr"
-  />
-  <ExpenseListItem
-    expense={
-      Object {
-        "amount": 10000,
-        "createdAt": 10000,
-        "description": "c",
-        "id": "zcxvzxvczxv",
-        "note": "123",
+      key="qwerqewrqewr"
+    />
+    <ExpenseListItem
+      expense={
+        Object {
+          "amount": 10000,
+          "createdAt": 10000,
+          "description": "c",
+          "id": "zcxvzxvczxv",
+          "note": "123",
+        }
       }
-    }
-    key="zcxvzxvczxv"
-  />
+      key="zcxvzxvczxv"
+    />
+  </div>
 </div>
 `;

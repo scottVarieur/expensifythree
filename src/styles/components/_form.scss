@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  * {
+    margin-bottom: $md-size;
+  }
+
+}
+
+.form__error {
+  color: rgb(197, 16, 16);
+  margin: 0 0 $md-size 0;
+  font-style: italic;
+}
+
+.SingleDatePicker {
+  margin-bottom: 0;
+}

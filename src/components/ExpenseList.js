@@ -4,14 +4,23 @@ import ExpenseListItem from './ExpenseListItem';
 import getVisibleExpenses from '../selectors/expenses';
 
 export const ExpenseList = props => (
-  <div>
-    {props.expenses.length === 0 ? (
-      <p>No expnese</p>
-    ) : (
-      props.expenses.map(expense => (
-        <ExpenseListItem key={expense.id} expense={expense} />
-      ))
-    )}
+  <div className="content-container">
+    <div className="list-header">
+      <div className="show-for-mobile">Expenses</div>
+      <div className="show-for-desktop">Expense</div>
+      <div className="show-for-desktop">Amount</div>
+    </div>
+    <div class="list-body">
+      {props.expenses.length === 0 ? (
+        <div className="list-item list-item--message">
+          <span>No expneses</span>
+        </div>
+      ) : (
+        props.expenses.map(expense => (
+          <ExpenseListItem key={expense.id} expense={expense} />
+        ))
+      )}
+    </div>
   </div>
 );
 

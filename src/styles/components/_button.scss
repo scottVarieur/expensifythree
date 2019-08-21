@@ -1,0 +1,32 @@
+.btn {
+  padding: $sm-size;
+  border: none;
+  color: white;
+  font-weight: 300;
+  font-size: $font-size-lg;
+  box-shadow: 0 0.5rem 1rem rgba($black, 0.2);
+  display: inline-block;
+  text-decoration: none;
+  line-height: 1;
+  background-color: $bright-blue;
+
+  &:focus {
+    outline: none;
+  }
+
+  &--animate:active {
+    transform: translateY(1px);
+  }
+
+  &--link {
+    background: none;
+    box-shadow: none;
+  }
+
+  &--remove {
+    background-color: #888888;
+  }
+}
+
+// &:active {
+//   box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
